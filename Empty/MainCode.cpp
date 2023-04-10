@@ -3,23 +3,53 @@
 
 using namespace std;
 
-typedef struct
+
+
+
+
+class AT
 {
-	int Number;
-	string Name;
-}Test_t;
+public:
+	int A =10;
+	AT()
+	{
+		cout << "A 地址为" << &A << endl;
+	}
+};
 
+class BT : virtual public AT 
+{
+public:
+	BT()
+	{
+		cout << "B 地址为" << &A << endl;
+	}
+};
 
+class CT : virtual public AT
+{
+public:
+	CT()
+	{
+		cout << "C 地址为" << &A << endl;
+	}
+};
 
-
+class DT :public BT,public CT
+{
+public:
+	DT()
+	{
+		cout << "D 地址为" << &(CT::A) << endl;
+		cout << "D 地址为" << &(BT::A) << endl;
+	}
+};
 
 int main()
 {
-	Test_t Test;
-	Test.Name = "6666";
-	Test.Number = 123;
+	DT DDD;
 
-	cout << Test.Name<<"======" << Test.Number<< endl;
+	//cout << "内容：" << asd.a << "大小为：" << asd.b << endl;
 
 	system("pause");
 
